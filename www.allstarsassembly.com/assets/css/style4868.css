@@ -1,0 +1,1537 @@
+/* ========================================================
+   PASTURE OF LIFE — Public Website Styles
+   ======================================================== */
+
+:root {
+  --primary: #1a3a5c;
+  --accent: #2e7d32;
+  --gold: #a50606;
+  --light-bg: #f8f9fa;
+}
+
+/* ─── Global ──────────────────────────────────────────── */
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #333;
+}
+a {
+  color: var(--accent);
+}
+a:hover {
+  color: var(--primary);
+}
+
+/* ─── Page Loader ─────────────────────────────────────── */
+#pageLoader {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+}
+#pageLoader img {
+  width: 130px;
+  animation: loaderPulse 1.1s ease-in-out infinite;
+}
+#pageLoader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+@keyframes loaderPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+/* ─── Navbar ──────────────────────────────────────────── */
+.site-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+.footer-logo {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+.navbar-dark .navbar-brand {
+  color: #fff;
+}
+.site-navbar {
+  background: linear-gradient(90deg, var(--primary), #1e4d6e);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+.site-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active {
+  color: var(--gold) !important;
+}
+
+/* ─── Hero Carousel ──────────────────────────────────── */
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-slide-img {
+  width: 100%;
+  height: 88vh;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.carousel-slide-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+}
+
+.slide-content {
+  max-width: 720px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+}
+
+.slide-content h1 {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #fff;
+  min-height: 1.2em;
+}
+
+/* Typing cursor */
+.slide-heading::after {
+  content: "|";
+  animation: blink 0.7s step-end infinite;
+  font-weight: 300;
+  opacity: 0.8;
+}
+.slide-heading.typed::after {
+  display: none;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.slide-content p {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 1.75rem;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background-clip: unset;
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+.carousel-indicators .active {
+  background-color: var(--gold);
+  border-color: var(--gold);
+  opacity: 1;
+  width: 28px;
+  border-radius: 5px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 1rem;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.2s;
+}
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .carousel-slide-img {
+    height: 60vh;
+  }
+  .slide-content h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ─── Revenue, pastor's Prayer Player ────────────────────────── */
+.Revenue, pastor-prayer-section {
+  background: linear-gradient(135deg, #0f2337 0%, #1a3a5c 60%, #2e7d32 100%);
+  padding: 2rem 0;
+}
+.Revenue, pastor-prayer-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.Revenue, pastor-prayer-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.6rem;
+  color: #be03cf;
+}
+.Revenue, pastor-prayer-text {
+  flex: 1;
+  min-width: 180px;
+}
+.Revenue, pastor-prayer-label {
+  font-size: .7rem;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.6);
+  margin-bottom: .2rem;
+  font-weight: 700;
+}
+.Revenue, pastor-prayer-title {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: .2rem;
+}
+.Revenue, pastor-prayer-sub {
+  color: rgba(255,255,255,.7);
+  font-size: .85rem;
+  margin: 0;
+}
+.Revenue, pastor-prayer-player {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 2;
+  min-width: 260px;
+  background: rgba(255,255,255,.1);
+  border-radius: 50px;
+  padding: .6rem 1.2rem;
+  backdrop-filter: blur(6px);
+}
+.prayer-play-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #83015c;
+  border: none;
+  color: #1a3a5c;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform .15s, background .15s;
+}
+.prayer-play-btn:hover { transform: scale(1.1); background: #ffca28; }
+.prayer-progress-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.prayer-time {
+  color: rgba(255,255,255,.75);
+  font-size: .75rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.prayer-progress-bar {
+  flex: 1;
+  height: 5px;
+  background: rgba(255,255,255,.25);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+.prayer-progress-fill {
+  height: 100%;
+  background: #f9a825;
+  border-radius: 3px;
+  width: 0%;
+  transition: width .3s linear;
+  pointer-events: none;
+}
+@media (max-width: 767.98px) {
+  .Revenue, pastor-prayer-card { flex-direction: column; text-align: center; }
+  .Revenue, pastor-prayer-icon { margin: 0 auto; }
+  .Revenue, pastor-prayer-player { width: 100%; min-width: unset; }
+}
+
+/* ─── Welcome Home ───────────────────────────────────── */
+.welcome-home-section {
+  background: #fff;
+}
+.welcome-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.welcome-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+.welcome-body {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 680px;
+  line-height: 1.8;
+}
+
+/* ─── Sunday Service ──────────────────────────────────── */
+.sunday-section {
+  overflow: hidden;
+}
+.sunday-left {
+  background: var(--primary);
+  min-height: 520px;
+}
+.sunday-left-inner {
+  padding: 4rem 3.5rem;
+  max-width: 540px;
+}
+.sunday-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.sunday-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.sunday-divider {
+  width: 50px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin: 1rem 0;
+}
+.sunday-body {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+.sunday-right {
+  background: #0d2137;
+  min-height: 520px;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+.sunday-video {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  display: block;
+}
+.sunday-right-portrait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+/* Portrait layout: centre text in its column — balanced gap from video */
+.sunday-left-portrait {
+  justify-content: center;
+}
+.sunday-left-portrait .sunday-left-inner {
+  padding-right: 3.5rem;
+}
+.sunday-video-portrait {
+  max-height: 520px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  display: block;
+}
+.sunday-video-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+/* ─── Revenue, pastor Section ──────────────────────────────────── */
+.Revenue, pastor-section {
+  background: var(--light-bg);
+}
+.Revenue, pastor-img {
+  width: 100%;
+  max-width: 340px;
+  max-height: 360px;
+  border-radius: 20px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+  object-position: center top;
+}
+.Revenue, pastor-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+}
+.Revenue, pastor-body {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── What We Believe ─────────────────────────────────── */
+.believe-section {
+  background: var(--primary);
+}
+.believe-section .welcome-eyebrow {
+  color: var(--gold);
+}
+.believe-section .section-title {
+  color: #fff;
+}
+.believe-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+.believe-section .section-divider {
+  background: var(--gold);
+}
+.believe-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2.5rem 1.75rem;
+  transition:
+    background 0.25s,
+    transform 0.25s;
+  color: #fff;
+}
+.believe-card:hover {
+  background: rgba(255, 255, 255, 0.13);
+  transform: translateY(-5px);
+}
+.believe-icon {
+  width: 68px;
+  height: 68px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.7rem;
+  color: var(--primary);
+}
+.believe-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+.believe-body {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 991.98px) {
+  .sunday-left-inner {
+    padding: 3rem 2rem;
+  }
+  .sunday-video {
+    min-height: 320px;
+  }
+  .sunday-left {
+    min-height: auto;
+  }
+  .sunday-right {
+    min-height: 320px;
+  }
+}
+@media (max-width: 575.98px) {
+  .sunday-left-inner {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* ─── Section headings ───────────────────────────────── */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.section-subtitle {
+  color: #6c757d;
+  max-width: 600px;
+}
+.section-divider {
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 0.75rem auto 1.5rem;
+}
+
+/* ─── Cards ───────────────────────────────────────────── */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.07);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+.card-img-top {
+  border-radius: 12px 12px 0 0;
+}
+
+/* ─── Service times ───────────────────────────────────── */
+.service-card {
+  border-left: 5px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+}
+.service-card .service-day {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+.service-card .service-time {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ─── Sermon card ─────────────────────────────────────── */
+.sermon-thumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+.sermon-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sermon-play-btn:hover {
+  background: #fff;
+}
+
+/* ─── Event card ──────────────────────────────────────── */
+.event-date-badge {
+  background: var(--primary);
+  color: white;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  min-width: 55px;
+}
+.event-date-badge .day {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.event-date-badge .month {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* ─── Donate section ─────────────────────────────────── */
+.donate-hero {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  border-radius: 20px;
+}
+
+/* ─── Footer ──────────────────────────────────────────── */
+.site-footer {
+  background: #0d1f35;
+  color: rgba(255, 255, 255, 0.7);
+}
+.site-footer h6,
+.footer-heading {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+.site-footer a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-footer a:hover {
+  color: var(--gold);
+}
+.footer-links li {
+  margin-bottom: 0.45rem;
+}
+.footer-bottom {
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff !important;
+  font-size: 1.05rem;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+  text-decoration: none;
+}
+.footer-social-btn:hover {
+  transform: translateY(-3px);
+  opacity: 0.85;
+  color: #fff !important;
+}
+
+/* ─── Utilities ───────────────────────────────────────── */
+.btn-church-primary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.btn-church-primary:hover {
+  opacity: 0.9;
+  color: white;
+}
+.btn-church-outline {
+  border: 2px solid white;
+  color: white;
+  padding: 0.7rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  background: transparent;
+  transition: all 0.2s;
+}
+.btn-church-outline:hover {
+  background: white;
+  color: var(--primary);
+}
+
+.bg-church {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+.text-church {
+  color: var(--primary);
+}
+.text-accent {
+  color: var(--accent);
+}
+.bg-light-green {
+  background: #e8f5e9;
+}
+
+/* ─── Announcement ticker ─────────────────────────────── */
+.announcement-bar {
+  background: var(--gold);
+  color: #333;
+  font-weight: 600;
+  padding: 0.4rem 0;
+}
+
+/* ─── Map placeholder ─────────────────────────────────── */
+.map-placeholder {
+  background: #e9ecef;
+  border-radius: 12px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+}
+
+/* ─── Shared image classes ────────────────────────────── */
+.card-img-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  display: block;
+}
+.blog-hero-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+.reading-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.donate-submit {
+  padding: 1rem !important;
+  font-size: 1.25rem !important;
+}
+
+/* ─── Gallery (legacy .gallery-item kept for compatibility) ── */
+.gallery-item {
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+  display: block;
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.6));
+  opacity: 0;
+  transition: opacity 0.25s;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.6rem;
+}
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* ─── Gallery grid (gallery.php) ─────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+@media (min-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+}
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+}
+@media (min-width: 992px) {
+  .gallery-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+}
+@media (min-width: 1200px) {
+  .gallery-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+}
+.gallery-cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #e9ecef;
+}
+.gallery-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.gallery-cell-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.25s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-cell:hover img {
+  transform: scale(1.07);
+}
+.gallery-cell:hover .gallery-cell-overlay {
+  opacity: 1;
+}
+
+/* Group cards on about page */
+.group-card {
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.group-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ─── Contact circles ─────────────────────────────────── */
+.contact-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── Sermon / media thumbnail ────────────────────────── */
+.sermon-thumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  display: block;
+}
+
+/* ─── Reviews section ─────────────────────────────────── */
+.review-card {
+  border-radius: 16px;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ─── Group cards ─────────────────────────────────────── */
+.group-card {
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.group-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ─── Touch targets (accessibility) ──────────────────── */
+@media (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .sidebar-link {
+    min-height: 44px;
+  }
+  .minister-photo-thumb {
+    min-width: 56px;
+    min-height: 56px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────
+   RESPONSIVE BREAKPOINTS
+   ────────────────────────────────────────────────────── */
+
+/* ── Tablet landscape & below (< 992px) ── */
+@media (max-width: 991.98px) {
+  .carousel-slide-img {
+    height: 70vh;
+  }
+  .slide-content {
+    padding: 2rem 2.25rem;
+  }
+  .sunday-left-inner {
+    padding: 3rem 2rem;
+  }
+  .sunday-video,
+  .sunday-left,
+  .sunday-right {
+    min-height: 360px;
+  }
+  .Revenue, pastor-img {
+    max-width: 340px;
+  }
+  .site-logo {
+    height: 40px;
+  }
+}
+
+/* ── Tablet portrait & below (< 768px) ── */
+@media (max-width: 767.98px) {
+  /* Carousel */
+  .carousel-slide-img {
+    height: 58vh;
+  }
+  .slide-content {
+    padding: 1.5rem 1.75rem;
+    max-width: 95%;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 36px;
+    height: 36px;
+    margin: 0 0.4rem;
+  }
+
+  /* Page hero banners */
+  .page-hero {
+    padding: 2.25rem 0 !important;
+  }
+  .page-hero h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem) !important;
+  }
+  .page-hero .lead {
+    font-size: 1rem !important;
+  }
+
+  /* Section */
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+  .welcome-body {
+    font-size: 1rem;
+  }
+
+  /* Sunday section */
+  .sunday-left,
+  .sunday-right {
+    min-height: auto;
+  }
+  .sunday-left-inner {
+    padding: 2.5rem 1.5rem;
+  }
+  .sunday-video {
+    min-height: 280px;
+  }
+
+  /* Revenue, pastor */
+  .Revenue, pastor-section .row {
+    text-align: center;
+  }
+  .Revenue, pastor-section .section-divider {
+    margin: 1rem auto;
+  }
+  .Revenue, pastor-img {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  /* Cards */
+  .card-img-cover {
+    height: 180px;
+  }
+  .blog-hero-img {
+    max-height: 260px;
+  }
+  .sermon-thumbnail {
+    height: 160px;
+  }
+
+  /* Gallery */
+  .gallery-item {
+    border-radius: 8px;
+  }
+
+  /* Map */
+  .map-placeholder {
+    height: 200px;
+  }
+
+  /* Footer */
+  .footer-middle-cols {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+
+  /* Navbar Give button */
+  .nav-give-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  /* General */
+  .site-logo {
+    height: 36px;
+  }
+}
+
+/* ── Mobile (< 576px) ── */
+@media (max-width: 575.98px) {
+  /* Carousel */
+  .carousel-slide-img {
+    height: 52vh;
+  }
+  .slide-content {
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+  .slide-content h1 {
+    font-size: 1.5rem !important;
+    min-height: auto;
+  }
+  .slide-content p {
+    font-size: 0.92rem;
+    margin-bottom: 1.25rem;
+  }
+  .slide-content .btn {
+    padding: 0.45rem 1.4rem;
+    font-size: 0.85rem;
+  }
+  .carousel-indicators {
+    bottom: 8px;
+  }
+
+  /* Welcome */
+  .welcome-home-section {
+    padding: 2.5rem 0 !important;
+  }
+  .welcome-title {
+    font-size: 1.6rem;
+  }
+
+  /* Sunday */
+  .sunday-left-inner {
+    padding: 2rem 1.25rem;
+  }
+  .sunday-video {
+    min-height: 230px;
+  }
+
+  /* Believe cards */
+  .believe-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  /* Revenue, pastor */
+  .Revenue, pastor-img {
+    max-width: 240px;
+  }
+  .Revenue, pastor-name {
+    font-size: 1.25rem;
+  }
+
+  /* Stat cards */
+  .stat-card {
+    padding: 0.7rem 0.8rem;
+  }
+  .stat-card .stat-number {
+    font-size: 1.25rem;
+  }
+  .stat-card .stat-icon {
+    font-size: 1.25rem;
+  }
+
+  /* Cards & images */
+  .card-img-cover {
+    height: 160px;
+  }
+  .sermon-thumbnail {
+    height: 150px;
+  }
+  .blog-hero-img {
+    max-height: 210px;
+    border-radius: 8px;
+  }
+  .reading-img {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* Contact circles */
+  .contact-circle {
+    width: 40px;
+    height: 40px;
+  }
+  .contact-circle i {
+    font-size: 1rem !important;
+  }
+
+  /* Map */
+  .map-placeholder {
+    height: 170px;
+  }
+
+  /* Donate */
+  .donate-purpose .col-6 {
+    flex: 0 0 50%;
+  }
+  .donate-submit {
+    padding: 0.7rem !important;
+    font-size: 1rem !important;
+  }
+
+  /* Section title */
+  .section-title {
+    font-size: 1.45rem;
+  }
+
+  /* Buttons */
+  .btn-church-primary {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  .btn-church-outline {
+    padding: 0.55rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Footer collapse middle cols */
+  .footer-middle-cols {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .footer-logo {
+    height: 44px;
+  }
+  .site-logo {
+    height: 32px;
+  }
+
+  /* Gallery */
+  .gallery-item {
+    border-radius: 6px;
+  }
+}
+
+/* ── Very small phones (< 400px) ── */
+@media (max-width: 399px) {
+  .slide-content {
+    padding: 1rem;
+  }
+  .slide-content h1 {
+    font-size: 1.3rem !important;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+  .donate-purpose .col-6 {
+    flex: 0 0 100%;
+  }
+}
+
+/* ─── Announcement bar — marquee ticker ──────────────────── */
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee-scroll 35s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 575.98px) {
+  #announcementBar .container {
+    gap: 0.4rem !important;
+  }
+  .marquee-track {
+    animation-duration: 25s;
+  }
+}
+
+/* native loading="lazy" handles lazy loading — no CSS opacity trick needed */
+
+/* ─── Homepage Revenue, pastor/section images ────────────────────── */
+.Revenue, pastor-img,
+.card-img-cover,
+.sermon-thumbnail,
+.gallery-cell img {
+  will-change: auto;
+}
+
+/* ─── Navbar brand text ─────────────────────────────────── */
+.site-brand-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ─── Revenue, pastor social buttons — icon-only on mobile ───────── */
+.Revenue, pastor-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 575.98px) {
+  .Revenue, pastor-social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    font-size: 1rem;
+  }
+  .Revenue, pastor-btn-label {
+    display: none;
+  }
+}
+
+/* ─── Mobile alignment — everything centered on mobile ──── */
+@media (max-width: 767.98px) {
+  /* Sunday service text block */
+  .sunday-left {
+    justify-content: center !important;
+  }
+  .sunday-left-portrait {
+    justify-content: center !important;
+  }
+  .sunday-left-inner {
+    text-align: center !important;
+    padding-right: 1.5rem !important;
+    width: 100%;
+    max-width: 100%;
+  }
+  .sunday-eyebrow,
+  .sunday-title,
+  .sunday-body {
+    text-align: center !important;
+  }
+  .sunday-divider {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .sunday-left-inner .d-flex {
+    justify-content: center !important;
+  }
+  .sunday-left-inner ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  /* Revenue, pastor section — right column text */
+  .Revenue, pastor-section .col-lg-7 {
+    text-align: center;
+  }
+  .Revenue, pastor-section .col-lg-7 p,
+  .Revenue, pastor-section .col-lg-7 h2,
+  .Revenue, pastor-section .col-lg-7 h3,
+  .Revenue, pastor-section .col-lg-7 h4,
+  .Revenue, pastor-section .col-lg-7 .welcome-eyebrow {
+    text-align: center !important;
+  }
+  .Revenue, pastor-section .section-divider {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .Revenue, pastor-section .col-lg-7 .d-flex {
+    justify-content: center !important;
+  }
+
+  /* Section headings, eyebrows, subtitles across all sections */
+  .section-eyebrow,
+  .welcome-eyebrow,
+  .section-title,
+  .section-subtitle,
+  .section-intro {
+    text-align: center !important;
+  }
+  .section-divider {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* All inline d-flex button/link groups → centered */
+  .d-flex.gap-3,
+  .d-flex.gap-2 {
+    justify-content: center !important;
+  }
+
+  /* Service cards — center all text on mobile */
+  .service-card {
+    text-align: center;
+    border-left: none;
+    border-top: 5px solid var(--accent);
+    border-radius: 12px;
+  }
+  .service-card i {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Contact page — center headings and form title on mobile */
+  .contact-page-col h3,
+  .contact-page-col h4 { text-align: center; }
+  .contact-page-col .list-unstyled li {
+    align-items: flex-start;
+  }
+
+  /* Foundation Scripture — compact on mobile */
+  .foundation-verse { font-size: 1.15rem !important; }
+  .foundation-scripture-section { padding: 3.5rem 0 !important; }
+  .foundation-quote-icon { font-size: 3rem !important; }
+}
+
+/* ─── Foundation Scripture Section ───────────────────────────── */
+.foundation-scripture-section {
+  background: linear-gradient(160deg, #060f1e 0%, #0f2139 45%, #0b1e35 100%);
+  padding: 5.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.foundation-scripture-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+.foundation-inner {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.foundation-seal {
+  width: 68px; height: 68px;
+  background: rgba(249, 168, 37, 0.12);
+  border: 2px solid rgba(249, 168, 37, 0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: rgb(2, 126, 8);
+  font-size: 1.5rem;
+}
+.foundation-eyebrow-label {
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #f9a825;
+  margin-bottom: 2rem;
+}
+.foundation-quote-icon {
+  font-size: 4.5rem;
+  color: rgba(249, 168, 37, 0.2);
+  line-height: 1;
+  display: block;
+  margin-bottom: -.75rem;
+}
+.foundation-verse {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  line-height: 1.65;
+  color: #fff;
+  font-style: italic;
+  border: none;
+  margin: 0 0 .75rem;
+  padding: 0 1rem;
+}
+.foundation-ref {
+  font-size: .88rem;
+  color: #f9a825;
+  font-weight: 700;
+  font-style: normal;
+  display: block;
+  margin-bottom: 2rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.foundation-rule {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, transparent, #f9a825, transparent);
+  margin: 0 auto 1.75rem;
+  border-radius: 2px;
+  border: none;
+}
+.foundation-body-text {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.9;
+  font-size: 1.025rem;
+  max-width: 680px;
+  margin: 0 auto 2rem;
+}
+.foundation-body-text em {
+  color: #fff;
+  font-style: italic;
+}
+
+/* ─── About Page — Scripture Callout ─────────────────────────── */
+.verse-callout {
+  border-left: 4px solid #f9a825;
+  background: linear-gradient(135deg, #060f1e, #0f2139);
+  border-radius: 0 12px 12px 0;
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.verse-callout::after {
+  content: '\201C';
+  position: absolute;
+  right: 1.25rem; top: -.5rem;
+  font-size: 8rem;
+  color: rgba(249,168,37,.08);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+.verse-callout blockquote {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #fff;
+  margin: 0 0 .65rem;
+  padding: 0;
+  border: none;
+  line-height: 1.7;
+}
+.verse-callout cite {
+  font-size: .82rem;
+  color: #f9a825;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+/* ── Back to top ──────────────────────────────────────────────── */
+#backToTop {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.25rem;
+  z-index: 1040;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #1a3a5c;
+  color: #fff;
+  font-size: .95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(0,0,0,.25);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity .25s, transform .25s;
+  cursor: pointer;
+}
+#backToTop.btt-visible {
+  opacity: .88;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+#backToTop:hover { opacity: 1; background: #2e7d32; }
+@media (max-width: 575.98px) {
+  #backToTop {
+    width: 32px;
+    height: 32px;
+    font-size: .8rem;
+    bottom: 1rem;
+    right: .85rem;
+  }
+}
